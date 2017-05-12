@@ -1,9 +1,11 @@
-function Hero(name, city, favouriteFood ) {
+function Hero(name, city, favouriteFood, worstFood ) {
   this.name = name;
   this.city = city;
   this.health = 100;
   this.favouriteFood = favouriteFood;
+  this.worstFood = worstFood;
   this.tasks = [];
+  this.bankBalance = 0;
 }  
 
 Hero.prototype = {
@@ -56,6 +58,8 @@ Hero.prototype = {
 
   taskComplete: function(task){
     task.isComplete = true;
+    this.bankBalance += task.reward;
+    task.reward = 0;
   },
 
   showCompleteTasks: function(task){

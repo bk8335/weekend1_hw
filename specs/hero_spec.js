@@ -14,7 +14,7 @@ describe("Hero tests", function() {
   var rat;
 
   beforeEach("setup", function(){
-    hero = new Hero("Max", "Edinburgh", "bacon");
+    hero = new Hero("Max", "Edinburgh", "bacon", "brussel sprouts");
     task = new Task("quest to eat every burger in " + hero.city, "medium", true, 20);
     task2 = new Task("go to every park in " + hero.city, "easy", false, 10);
     task3 = new Task("save Oinks from being robbed", "hard", true, 50);
@@ -99,7 +99,14 @@ describe("Hero tests", function() {
     rat.touch(food2);
     hero.eatFood(food2);
     assert.equal(62, hero.health);
+  })
 
+  it("hero bank balance goes up after completing a task", function(){
+    hero.addTask(task);
+    assert.equal(20, task.reward);
+    hero.taskComplete(task);
+    assert.equal(20, hero.bankBalance);
+    assert.equal(0, task.reward);
   })
   
 
