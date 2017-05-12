@@ -80,6 +80,10 @@ Hero.prototype = {
         return true;
       }
     })
+  },
+
+  attack: function(target){
+    target.health -= 50;
   }
 
 }

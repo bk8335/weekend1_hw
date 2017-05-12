@@ -21,6 +21,7 @@ describe("Hero tests", function() {
     task2 = new Task("go to every park in " + hero.city, "easy", false, 10);
     task3 = new Task("save Oinks from being robbed", "hard", true, 50);
     food = new Food("Poutine", 12);
+    food2 = new Food("brussel sprouts", 35);
     rat = new Rat();
     villain = new Villain("bedtime");
   });
@@ -113,7 +114,6 @@ describe("Hero tests", function() {
   })
 
   it("hero should die after eating worst food", function(){
-    var food2 = new Food("brussel sprouts", 35);
     hero.eatFood(food2);
     assert.equal(0, hero.health);
   })
@@ -122,6 +122,16 @@ describe("Hero tests", function() {
     villain.throwFood(food, hero);
     assert.equal(88, hero.health);
     assert.equal(0, villain.food.length);
+  })
+
+  it("villain can kill hero", function(){
+    villain.throwFood(food2, hero);
+    assert.equal(0, hero.health);
+  })
+
+  it("hero should attack villain", function(){
+    hero.attack(villain);
+    assert.equal(50, villain.health);
   })
   
 
