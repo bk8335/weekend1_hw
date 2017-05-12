@@ -1,8 +1,9 @@
 var assert = require('assert');
 var Hero = require('../hero.js');
 var Task = require('../task.js');
-var Food = require('../food.js')
-var Rat = require('../rat.js')
+var Food = require('../food.js');
+var Rat = require('../rat.js');
+var Villain = require('../villain.js');
 
 describe("Hero tests", function() {
 
@@ -12,6 +13,7 @@ describe("Hero tests", function() {
   var task3;
   var food;
   var rat;
+  var villain;
 
   beforeEach("setup", function(){
     hero = new Hero("Max", "Edinburgh", "bacon", "brussel sprouts");
@@ -20,6 +22,7 @@ describe("Hero tests", function() {
     task3 = new Task("save Oinks from being robbed", "hard", true, 50);
     food = new Food("Poutine", 12);
     rat = new Rat();
+    villain = new Villain("bedtime");
   });
 
   it("should have a name", function(){
@@ -113,6 +116,12 @@ describe("Hero tests", function() {
     var food2 = new Food("brussel sprouts", 35);
     hero.eatFood(food2);
     assert.equal(0, hero.health);
+  })
+
+  it("villain can throw food", function(){
+    villain.throwFood(food, hero);
+    assert.equal(88, hero.health);
+    assert.equal(0, villain.food.length);
   })
   
 
