@@ -1,6 +1,7 @@
 var assert = require('assert');
 var Hero = require('../hero.js');
 var Task = require('../task.js');
+var Food = require('../food.js')
 
 describe("Hero tests", function() {
 
@@ -10,6 +11,7 @@ describe("Hero tests", function() {
     hero = new Hero("Max", "Edinburgh", "bacon");
     task = new Task("quest to eat every burger in " + hero.city, "medium", true, 20);
     task2 = new Task("go to every park in " + hero.city, "easy", false, 10);
+    food = new Food("Poutine", 12);
   });
 
   it("should have a name", function(){
@@ -29,6 +31,16 @@ describe("Hero tests", function() {
     hero.addTask(task2);
     console.log(hero.tasks);
     assert.equal(2, hero.tasks.length);
+  })
+
+  it("should be able to eat something", function(){
+    hero.eatFood(food);
+    assert.equal(112, hero.health);
+  })
+
+  it("favourite food increase repllenishment value more", function() {
+    hero.eatFood(new Food("bacon", 20));
+    assert.equal(130, hero.health);
   })
   
 
