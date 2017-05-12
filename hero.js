@@ -22,7 +22,38 @@ Hero.prototype = {
     else{
     this.health += food.replenishmentValue;
     }
+  },
+
+  orderTaskbyDifficulty: function(){
+    return this.tasks.sort(function(a, b){
+      if(a.difficulty < b.difficulty){
+        return -1;
+      }
+      if(a.difficulty > b.difficulty){
+        return 1;
+      }
+      return 0;
+    });
+  },
+
+  orderTaskbyUrgency: function(){
+    return this.tasks.sort(function(a, b){
+      if(a.isUrgent < b.isUrgent){
+        return -1;
+      }
+      if(a.isUrgent > b.isUrgent){
+        return 1;
+      }
+      return 0;
+    });
+  },
+
+  orderTaskbyReward: function(){
+    return this.tasks.sort(function(a,b){
+      return b.reward - a.reward;
+    })
   }
+
 }
 
 module.exports = Hero;
