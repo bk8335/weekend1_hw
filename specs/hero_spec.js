@@ -66,6 +66,12 @@ describe("Hero tests", function() {
     var result = hero.orderTaskbyReward();
     assert.equal(50, result[0].reward)
   })
+
+  it("should be able to mark a task complete", function(){
+    hero.addTask(task);
+    hero.taskComplete(task);
+    assert.equal(true, task.isComplete);
+  })
   
 
 

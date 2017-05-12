@@ -52,6 +52,10 @@ Hero.prototype = {
     return this.tasks.sort(function(a,b){
       return b.reward - a.reward;
     })
+  },
+
+  taskComplete: function(task){
+    task.isComplete = true;
   }
 
 }
