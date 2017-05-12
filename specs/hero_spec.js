@@ -6,6 +6,10 @@ var Food = require('../food.js')
 describe("Hero tests", function() {
 
   var hero;
+  var task;
+  var task2;
+  var task3;
+  var food;
 
   beforeEach("setup", function(){
     hero = new Hero("Max", "Edinburgh", "bacon");
