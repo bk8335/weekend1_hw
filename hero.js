@@ -56,6 +56,22 @@ Hero.prototype = {
 
   taskComplete: function(task){
     task.isComplete = true;
+  },
+
+  showCompleteTasks: function(task){
+    return this.tasks.filter(function(task){
+      if(task.isComplete === true){
+        return true;
+      }
+    })
+  },
+
+  showIncompleteTasks: function(task){
+    return this.tasks.filter(function(task){
+      if(task.isComplete === false){
+        return true;
+      }
+    })
   }
 
 }

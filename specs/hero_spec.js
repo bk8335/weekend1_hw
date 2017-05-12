@@ -72,6 +72,17 @@ describe("Hero tests", function() {
     hero.taskComplete(task);
     assert.equal(true, task.isComplete);
   })
+
+  it("should be able to filter by complete/incomplete tasks", function(){
+    hero.addTask(task);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.taskComplete(task);
+    var result1 = hero.showCompleteTasks();
+    assert.equal(1, result1.length);
+    var result2 = hero.showIncompleteTasks();
+    assert.equal(2, result2.length);
+  })
   
 
 
