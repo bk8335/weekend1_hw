@@ -18,7 +18,11 @@ Hero.prototype = {
   },
 
   eatFood: function(food){
-    if(this.favouriteFood === food.name){
+    if(this.worstFood === food.name){
+      this.health = 0;
+      console.log(this.name + " just lost his superpowers by eating his worst food - " + this.worstFood + " (yuk!)")
+    }
+    else if(this.favouriteFood === food.name){
       this.health += (food.replenishmentValue * 1.5);
     }
     else{

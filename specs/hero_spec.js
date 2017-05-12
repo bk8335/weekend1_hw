@@ -95,7 +95,7 @@ describe("Hero tests", function() {
     assert.equal(100, hero.health);
     hero.eatFood(food);
     assert.equal(112, hero.health);
-    food2 = new Food("fish and chips", 50);
+    var food2 = new Food("fish and chips", 50);
     rat.touch(food2);
     hero.eatFood(food2);
     assert.equal(62, hero.health);
@@ -107,6 +107,12 @@ describe("Hero tests", function() {
     hero.taskComplete(task);
     assert.equal(20, hero.bankBalance);
     assert.equal(0, task.reward);
+  })
+
+  it("hero should die after eating worst food", function(){
+    var food2 = new Food("brussel sprouts", 35);
+    hero.eatFood(food2);
+    assert.equal(0, hero.health);
   })
   
 
