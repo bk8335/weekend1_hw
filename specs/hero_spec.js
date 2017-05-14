@@ -24,6 +24,12 @@ describe("Hero tests", function() {
     food2 = new Food("brussel sprouts", 35);
     rat = new Rat();
     villain = new Villain("bedtime");
+    food3 = new Food("salad", 7);
+    food4 = new Food("toast", 19);
+    villain.addFood(food);
+    villain.addFood(food2);
+    villain.addFood(food3);
+    villain.addFood(food4);
   });
 
   it("should have a name", function(){
@@ -121,7 +127,7 @@ describe("Hero tests", function() {
   it("villain can throw food", function(){
     villain.throwFood(food, hero);
     assert.equal(88, hero.health);
-    assert.equal(0, villain.food.length);
+    assert.equal(3, villain.food.length);
   })
 
   it("villain can kill hero", function(){
@@ -129,10 +135,27 @@ describe("Hero tests", function() {
     assert.equal(0, hero.health);
   })
 
-  it("hero should attack villain", function(){
+  it("hero can attack villain", function(){
     hero.attack(villain);
     assert.equal(50, villain.health);
   })
+
+  it("hero can throw first food in array(should be random, but failing)", function(){
+    villain.throwRandomFood(hero);
+    assert.equal(112, hero.health);
+  })
+
+  it("hero and villain can fight", function(){
+    villain.throwRandomFood(hero);
+    assert.equal(112, hero.health);
+    hero.attack(villain);
+    assert.equal(50, villain.health);
+    villain.throwRandomFood(hero);
+    assert.equal(0, hero.health);
+  })
+
+  // need to have game over when one hits 0 health
+  // need to make it a random food villain throws
   
 
 

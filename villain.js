@@ -20,8 +20,28 @@ Villain.prototype = {
     else{
     person.health -= food.replenishmentValue;
     }
-  }
+  },
 
+  throwRandomFood: function(hero){
+    // let counter = this.food.length;
+    // while (counter > 0){
+    //   let index = Math.floor(Math.random() * counter);
+    //   counter --;
+    //   let temp = this.food[counter];
+    //   this.food[counter] = this.food[index];
+    //   this.food[index] = temp;
+    // }
+    // return this.food;
+    // var j, x, i;
+    // for (i = this.food.length; i; i--) {
+    //     j = Math.floor(Math.random() * i);
+    //     x = this.food[i - 1];
+    //     this.food[i - 1] = this.food[j];
+    //     this.food[j] = x;
+    // }
+    hero.eatFood(this.food[0])
+    this.food.shift();
+  }
 
 }
 
